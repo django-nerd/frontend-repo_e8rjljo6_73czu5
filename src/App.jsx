@@ -4,7 +4,7 @@ import { About, Services, Products, WhyUs, Footer } from './components/Sections'
 
 function App() {
   return (
-    <div className="min-h-screen bg-white text-slate-900">
+    <div className="min-h-screen bg-black text-white">
       <Navbar />
       <main>
         <Hero />

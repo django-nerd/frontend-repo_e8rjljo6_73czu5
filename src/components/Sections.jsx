@@ -2,12 +2,12 @@ import { CheckCircle2, Shield, Sparkles, Wallet, BarChart3, Globe } from 'lucide
 
 export function About() {
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" className="py-20 bg-black">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">About Us</h2>
-            <p className="mt-4 text-slate-600 leading-relaxed">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">About Us</h2>
+            <p className="mt-4 text-slate-300 leading-relaxed">
               We build delightful financial tools that help businesses move money with confidence. Our platform simplifies digital banking with secure cards, fast payments, and real-time insights.
             </p>
             <ul className="mt-6 space-y-3">
@@ -16,8 +16,8 @@ export function About() {
                 'Global-ready payments and cards',
                 'Developer-friendly APIs and dashboards',
               ].map((item) => (
-                <li key={item} className="flex items-center gap-3 text-slate-700">
-                  <CheckCircle2 className="text-emerald-500" size={20} />
+                <li key={item} className="flex items-center gap-3 text-slate-200">
+                  <CheckCircle2 className="text-orange-400" size={20} />
                   {item}
                 </li>
               ))}
@@ -37,12 +37,12 @@ export function About() {
 
 function FeatureCard({ icon, title, subtitle }) {
   return (
-    <div className="rounded-2xl border border-slate-200 p-5 bg-white shadow-sm">
-      <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-900 text-white">
+    <div className="rounded-2xl border border-white/10 p-5 bg-white/5 shadow-sm">
+      <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-orange-500 text-black">
         {icon}
       </div>
-      <h3 className="mt-4 font-semibold text-slate-900">{title}</h3>
-      <p className="text-sm text-slate-600">{subtitle}</p>
+      <h3 className="mt-4 font-semibold text-white">{title}</h3>
+      <p className="text-sm text-slate-300">{subtitle}</p>
     </div>
   );
 }
@@ -61,21 +61,21 @@ export function Services() {
   ];
 
   return (
-    <section id="services" className="py-20 bg-slate-50">
+    <section id="services" className="py-20 bg-neutral-950">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">Our Services</h2>
-          <p className="mt-3 text-slate-600">Essential rails for modern commerce, delivered with simplicity.</p>
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">Our Services</h2>
+          <p className="mt-3 text-slate-300">Essential rails for modern commerce, delivered with simplicity.</p>
         </div>
 
         <div className="mt-10 grid md:grid-cols-3 gap-6">
           {items.map((item) => (
-            <div key={item.title} className="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-900 text-white">
+            <div key={item.title} className="rounded-2xl border border-white/10 p-6 bg-white/5 shadow-sm">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-orange-500 text-black">
                 {item.icon}
               </div>
-              <h3 className="mt-4 font-semibold text-slate-900">{item.title}</h3>
-              <p className="text-slate-600 text-sm">{item.desc}</p>
+              <h3 className="mt-4 font-semibold text-white">{item.title}</h3>
+              <p className="text-slate-300 text-sm">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -91,22 +91,22 @@ export function Products() {
     { name: 'Checkout', desc: 'Frictionless payments for e‑commerce.', tag: 'Pro' },
   ];
   return (
-    <section id="products" className="py-20 bg-white">
+    <section id="products" className="py-20 bg-black">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">Our Products</h2>
-          <p className="mt-3 text-slate-600">Tools that power your finances end‑to‑end.</p>
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">Our Products</h2>
+          <p className="mt-3 text-slate-300">Tools that power your finances end‑to‑end.</p>
         </div>
 
         <div className="mt-10 grid md:grid-cols-3 gap-6">
           {products.map((p) => (
-            <div key={p.name} className="group rounded-2xl border border-slate-200 p-6 bg-white shadow-sm hover:shadow-md transition-shadow">
+            <div key={p.name} className="group rounded-2xl border border-white/10 p-6 bg-white/5 shadow-sm hover:bg-white/10 transition-colors">
               <div className="flex items-center gap-2">
-                <span className="inline-flex items-center rounded-full bg-slate-900 text-white px-2 py-0.5 text-xs">{p.tag}</span>
+                <span className="inline-flex items-center rounded-full bg-orange-500 text-black px-2 py-0.5 text-xs">{p.tag}</span>
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-slate-900">{p.name}</h3>
-              <p className="text-slate-600 text-sm">{p.desc}</p>
-              <button className="mt-4 inline-flex items-center text-sm font-medium text-slate-900">
+              <h3 className="mt-4 text-lg font-semibold text-white">{p.name}</h3>
+              <p className="text-slate-300 text-sm">{p.desc}</p>
+              <button className="mt-4 inline-flex items-center text-sm font-medium text-orange-400 hover:text-orange-300">
                 Learn more →
               </button>
             </div>
@@ -124,24 +124,24 @@ export function WhyUs() {
     { title: 'Scales with You', desc: 'From first card to global operations.' },
   ];
   return (
-    <section id="why-us" className="py-20 bg-slate-50">
+    <section id="why-us" className="py-20 bg-neutral-950">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-10 items-start">
           <div>
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">Why Choose Us</h2>
-            <p className="mt-4 text-slate-600">We blend elegant user experience with rock‑solid infrastructure.</p>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">Why Choose Us</h2>
+            <p className="mt-4 text-slate-300">We blend elegant user experience with rock‑solid infrastructure.</p>
             <ul className="mt-6 space-y-4">
               {points.map((pt) => (
-                <li key={pt.title} className="rounded-xl border border-slate-200 p-4 bg-white shadow-sm">
-                  <h4 className="font-semibold text-slate-900">{pt.title}</h4>
-                  <p className="text-sm text-slate-600">{pt.desc}</p>
+                <li key={pt.title} className="rounded-xl border border-white/10 p-4 bg-white/5 shadow-sm">
+                  <h4 className="font-semibold text-white">{pt.title}</h4>
+                  <p className="text-sm text-slate-300">{pt.desc}</p>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm">
-            <h3 className="font-semibold text-slate-900">Designed for builders</h3>
-            <p className="mt-2 text-sm text-slate-600">SDKs, webhooks, and clear docs so you can ship faster.</p>
+          <div className="rounded-2xl border border-white/10 p-6 bg-white/5 shadow-sm">
+            <h3 className="font-semibold text-white">Designed for builders</h3>
+            <p className="mt-2 text-sm text-slate-300">SDKs, webhooks, and clear docs so you can ship faster.</p>
             <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
               <Stat label="Uptime" value="99.99%" />
               <Stat label="Currencies" value="35+" />
@@ -157,23 +157,23 @@ export function WhyUs() {
 
 function Stat({ label, value }) {
   return (
-    <div className="rounded-xl bg-slate-50 border border-slate-200 p-4 text-center">
-      <div className="text-2xl font-semibold text-slate-900">{value}</div>
-      <div className="text-slate-600 text-xs">{label}</div>
+    <div className="rounded-xl bg-white/5 border border-white/10 p-4 text-center">
+      <div className="text-2xl font-semibold text-white">{value}</div>
+      <div className="text-slate-300 text-xs">{label}</div>
     </div>
   );
 }
 
 export function Footer() {
   return (
-    <footer className="pt-16 pb-10 bg-white border-t border-black/5">
+    <footer className="pt-16 pb-10 bg-black border-t border-white/10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
           <div className="text-center md:text-left">
-            <div className="text-xl font-semibold text-slate-900">Finlite</div>
-            <p className="text-slate-600 text-sm mt-2">Modern tools for digital banking and e‑commerce.</p>
+            <div className="text-xl font-semibold text-white">Finlite</div>
+            <p className="text-slate-300 text-sm mt-2">Modern tools for digital banking and e‑commerce.</p>
           </div>
-          <div className="text-sm text-slate-600">
+          <div className="text-sm text-slate-400">
             © {new Date().getFullYear()} Finlite Inc. All rights reserved.
           </div>
         </div>
