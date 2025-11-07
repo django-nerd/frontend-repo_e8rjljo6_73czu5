@@ -47,6 +47,54 @@ function FeatureCard({ icon, title, subtitle }) {
   );
 }
 
+export function VisionMission() {
+  return (
+    <section id="vision-mission" className="py-20 bg-neutral-950">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto">
+          <span className="inline-flex items-center gap-2 rounded-full bg-orange-500/10 text-orange-400 px-3 py-1 text-xs font-medium border border-orange-500/20">
+            <Sparkles size={14} /> Our North Star
+          </span>
+          <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-white">Vision & Mission</h2>
+          <p className="mt-3 text-slate-300">What guides us today and where we're headed tomorrow.</p>
+        </div>
+
+        <div className="mt-10 grid md:grid-cols-2 gap-6">
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-orange-500 text-black">
+              <Sparkles />
+            </div>
+            <h3 className="mt-4 text-xl font-semibold text-white">Our Vision</h3>
+            <p className="mt-2 text-slate-300 text-sm leading-relaxed">
+              A world where moving money is instant, borderless, and accessible for everyone—from emerging founders to global enterprises.
+            </p>
+            <ul className="mt-4 space-y-2 text-sm text-slate-300">
+              <li className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 text-orange-400" size={18} /> Frictionless experiences across every channel</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 text-orange-400" size={18} /> Intelligence that anticipates needs, not just reports</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 text-orange-400" size={18} /> Trust by design—transparent, secure, resilient</li>
+            </ul>
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-orange-500 text-black">
+              <Shield />
+            </div>
+            <h3 className="mt-4 text-xl font-semibold text-white">Our Mission</h3>
+            <p className="mt-2 text-slate-300 text-sm leading-relaxed">
+              Empower teams to build and scale financial products with secure infrastructure, elegant tooling, and clear economics.
+            </p>
+            <ul className="mt-4 grid grid-cols-1 gap-2 text-sm text-slate-300">
+              <li className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 text-orange-400" size={18} /> Ship developer-first APIs and dashboards</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 text-orange-400" size={18} /> Operate with uncompromising compliance</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 text-orange-400" size={18} /> Partner for long-term, global growth</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function Services() {
   const items = [
     {
@@ -88,14 +136,14 @@ export function Products() {
   const products = [
     { name: 'Finlite Card', desc: 'Spend smarter with controls and insights.', tag: 'Popular' },
     { name: 'Payouts API', desc: 'Automate vendor and creator payments.', tag: 'New' },
-    { name: 'Checkout', desc: 'Frictionless payments for e‑commerce.', tag: 'Pro' },
+    { name: 'Checkout', desc: 'Frictionless payments for e-commerce.', tag: 'Pro' },
   ];
   return (
     <section id="products" className="py-20 bg-black">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">Our Products</h2>
-          <p className="mt-3 text-slate-300">Tools that power your finances end‑to‑end.</p>
+          <p className="mt-3 text-slate-300">Tools that power your finances end-to-end.</p>
         </div>
 
         <div className="mt-10 grid md:grid-cols-3 gap-6">
@@ -119,7 +167,7 @@ export function Products() {
 
 export function WhyUs() {
   const points = [
-    { title: 'Trusted Security', desc: 'End‑to‑end encryption and continuous monitoring.' },
+    { title: 'Trusted Security', desc: 'End-to-end encryption and continuous monitoring.' },
     { title: 'Transparent Pricing', desc: 'Clear rates without hidden fees.' },
     { title: 'Scales with You', desc: 'From first card to global operations.' },
   ];
@@ -129,7 +177,7 @@ export function WhyUs() {
         <div className="grid md:grid-cols-2 gap-10 items-start">
           <div>
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">Why Choose Us</h2>
-            <p className="mt-4 text-slate-300">We blend elegant user experience with rock‑solid infrastructure.</p>
+            <p className="mt-4 text-slate-300">We blend elegant user experience with rock-solid infrastructure.</p>
             <ul className="mt-6 space-y-4">
               {points.map((pt) => (
                 <li key={pt.title} className="rounded-xl border border-white/10 p-4 bg-white/5 shadow-sm">
@@ -171,7 +219,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
           <div className="text-center md:text-left">
             <div className="text-xl font-semibold text-white">Finlite</div>
-            <p className="text-slate-300 text-sm mt-2">Modern tools for digital banking and e‑commerce.</p>
+            <p className="text-slate-300 text-sm mt-2">Modern tools for digital banking and e-commerce.</p>
           </div>
           <div className="text-sm text-slate-400">
             © {new Date().getFullYear()} Finlite Inc. All rights reserved.
