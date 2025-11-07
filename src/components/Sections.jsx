@@ -1,4 +1,4 @@
-import { CheckCircle2, Shield, Sparkles, Wallet, BarChart3, Globe, Mail, Phone, MapPin, Send } from 'lucide-react';
+import { CheckCircle2, Shield, Sparkles, Wallet, BarChart3, Globe, Mail, Phone, MapPin, Send, ArrowRight } from 'lucide-react';
 
 export function About() {
   return (
@@ -154,8 +154,8 @@ export function Products() {
               </div>
               <h3 className="mt-4 text-lg font-semibold text-white">{p.name}</h3>
               <p className="text-slate-300 text-sm">{p.desc}</p>
-              <button className="mt-4 inline-flex items-center text-sm font-medium text-orange-400 hover:text-orange-300">
-                Learn more →
+              <button className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-orange-400 hover:text-orange-300">
+                Learn more <ArrowRight size={16} />
               </button>
             </div>
           ))}
@@ -218,7 +218,6 @@ export function GetInTouch() {
     const form = e.currentTarget;
     const data = new FormData(form);
     const name = data.get('name');
-    // lightweight UX feedback without backend
     alert(`Thanks, ${name}! We\u2019ll get back to you shortly.`);
     form.reset();
   }
@@ -279,16 +278,70 @@ export function GetInTouch() {
 }
 
 export function Footer() {
+  function handleSubscribe(e) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const email = data.get('email');
+    alert(`Subscribed: ${email}`);
+    form.reset();
+  }
+
   return (
     <footer className="pt-16 pb-10 bg-black border-t border-white/10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
-          <div className="text-center md:text-left">
+        <div className="grid md:grid-cols-4 gap-10">
+          <div>
             <div className="text-xl font-semibold text-white">Finlite</div>
             <p className="text-slate-300 text-sm mt-2">Modern tools for digital banking and e-commerce.</p>
+            <form onSubmit={handleSubscribe} className="mt-5 flex items-center gap-2">
+              <div className="relative flex-1">
+                <input type="email" name="email" required placeholder="Your email" className="w-full rounded-lg bg-black/40 border border-white/10 px-3 py-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+              </div>
+              <button type="submit" className="inline-flex items-center gap-2 rounded-lg bg-orange-500 text-black px-3 py-2 text-sm font-medium hover:bg-orange-400">
+                Subscribe <ArrowRight size={16} />
+              </button>
+            </form>
+            <p className="mt-2 text-xs text-slate-500">Stay updated with product news and releases.</p>
           </div>
-          <div className="text-sm text-slate-400">
-            © {new Date().getFullYear()} Finlite Inc. All rights reserved.
+
+          <div>
+            <h4 className="text-sm font-semibold text-white">Product</h4>
+            <ul className="mt-3 space-y-2 text-sm text-slate-300">
+              <li><a href="#products" className="hover:text-orange-400">Cards</a></li>
+              <li><a href="#services" className="hover:text-orange-400">Payments</a></li>
+              <li><a href="#services" className="hover:text-orange-400">Analytics</a></li>
+              <li><a href="#why-us" className="hover:text-orange-400">Security</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold text-white">Company</h4>
+            <ul className="mt-3 space-y-2 text-sm text-slate-300">
+              <li><a href="#about" className="hover:text-orange-400">About</a></li>
+              <li><a href="#vision-mission" className="hover:text-orange-400">Vision & Mission</a></li>
+              <li><a href="#contact" className="hover:text-orange-400">Contact</a></li>
+              <li><a href="#" className="hover:text-orange-400">Careers</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold text-white">Resources</h4>
+            <ul className="mt-3 space-y-2 text-sm text-slate-300">
+              <li><a href="#" className="hover:text-orange-400">Docs</a></li>
+              <li><a href="#" className="hover:text-orange-400">API Reference</a></li>
+              <li><a href="#" className="hover:text-orange-400">Status</a></li>
+              <li><a href="#" className="hover:text-orange-400">Support</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/10 pt-6">
+          <div className="text-sm text-slate-400">© {new Date().getFullYear()} Finlite Inc. All rights reserved.</div>
+          <div className="flex items-center gap-4 text-sm">
+            <a href="#" className="text-slate-400 hover:text-orange-400">Privacy</a>
+            <a href="#" className="text-slate-400 hover:text-orange-400">Terms</a>
+            <a href="#" className="text-slate-400 hover:text-orange-400 inline-flex items-center gap-1"><Globe size={16}/> EN</a>
           </div>
         </div>
       </div>
