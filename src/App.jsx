@@ -1,6 +1,6 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import { About, VisionMission, Services, Products, WhyUs, Footer } from './components/Sections';
+import { About, VisionMission, Services, Products, WhyUs, GetInTouch, Footer } from './components/Sections';
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
         <Services />
         <Products />
         <WhyUs />
+        <GetInTouch />
       </main>
       <Footer />
     </div>

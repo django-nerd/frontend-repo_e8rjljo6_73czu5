@@ -1,4 +1,4 @@
-import { CheckCircle2, Shield, Sparkles, Wallet, BarChart3, Globe } from 'lucide-react';
+import { CheckCircle2, Shield, Sparkles, Wallet, BarChart3, Globe, Mail, Phone, MapPin, Send } from 'lucide-react';
 
 export function About() {
   return (
@@ -209,6 +209,72 @@ function Stat({ label, value }) {
       <div className="text-2xl font-semibold text-white">{value}</div>
       <div className="text-slate-300 text-xs">{label}</div>
     </div>
+  );
+}
+
+export function GetInTouch() {
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const name = data.get('name');
+    // lightweight UX feedback without backend
+    alert(`Thanks, ${name}! We\u2019ll get back to you shortly.`);
+    form.reset();
+  }
+
+  return (
+    <section id="contact" className="py-20 bg-black">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto">
+          <span className="inline-flex items-center gap-2 rounded-full bg-orange-500/10 text-orange-400 px-3 py-1 text-xs font-medium border border-orange-500/20">
+            <Send size={14} /> Get in touch
+          </span>
+          <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-white">Let’s build something great</h2>
+          <p className="mt-3 text-slate-300">Have a question or want a tailored demo? Drop us a line and we’ll respond within a business day.</p>
+        </div>
+
+        <div className="mt-10 grid lg:grid-cols-5 gap-6">
+          <div className="lg:col-span-2 rounded-2xl border border-white/10 p-6 bg-white/5">
+            <h3 className="text-lg font-semibold text-white">Contact Details</h3>
+            <ul className="mt-4 space-y-3 text-slate-300 text-sm">
+              <li className="flex items-center gap-3"><Mail className="text-orange-400" size={18} /> hello@finlite.io</li>
+              <li className="flex items-center gap-3"><Phone className="text-orange-400" size={18} /> +1 (555) 010-1010</li>
+              <li className="flex items-center gap-3"><MapPin className="text-orange-400" size={18} /> 100 Market St, San Francisco, CA</li>
+            </ul>
+            <div className="mt-6 text-xs text-slate-400">We usually reply in under 24 hours.</div>
+          </div>
+
+          <div className="lg:col-span-3 rounded-2xl border border-white/10 p-6 bg-white/5">
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="sm:col-span-1">
+                <label htmlFor="name" className="block text-sm text-slate-300 mb-1">Name</label>
+                <input id="name" name="name" type="text" required className="w-full rounded-lg bg-black/40 border border-white/10 px-3 py-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Your name" />
+              </div>
+              <div className="sm:col-span-1">
+                <label htmlFor="email" className="block text-sm text-slate-300 mb-1">Email</label>
+                <input id="email" name="email" type="email" required className="w-full rounded-lg bg-black/40 border border-white/10 px-3 py-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="you@example.com" />
+              </div>
+              <div className="sm:col-span-2">
+                <label htmlFor="company" className="block text-sm text-slate-300 mb-1">Company</label>
+                <input id="company" name="company" type="text" className="w-full rounded-lg bg-black/40 border border-white/10 px-3 py-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Your company (optional)" />
+              </div>
+              <div className="sm:col-span-2">
+                <label htmlFor="message" className="block text-sm text-slate-300 mb-1">Message</label>
+                <textarea id="message" name="message" required rows={4} className="w-full rounded-lg bg-black/40 border border-white/10 px-3 py-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Tell us about your needs" />
+              </div>
+              <div className="sm:col-span-2 flex items-center justify-between gap-3">
+                <p className="text-xs text-slate-400">By submitting, you agree to our Terms and Privacy Policy.</p>
+                <button type="submit" className="inline-flex items-center gap-2 rounded-full bg-orange-500 text-black px-5 py-2.5 text-sm font-medium hover:bg-orange-400">
+                  Send message
+                  <Send size={16} />
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
