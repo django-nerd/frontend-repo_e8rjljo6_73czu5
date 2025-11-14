@@ -1,13 +1,14 @@
-import { CheckCircle2, Shield, Sparkles, Wallet, BarChart3, Globe, Zap, Layers, Building2, Server, Workflow, Lock } from 'lucide-react';
+import { CheckCircle2, Shield, Sparkles, Wallet, BarChart3, Globe, Zap, Layers, Building2, Server, Workflow, Lock, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import { Footer } from './components/Sections';
 
 export default function ServicesPage() {
   const core = [
-    { icon: <Wallet />, title: 'Card Issuing', desc: 'Virtual and physical cards with spending controls, limits, and real-time notifications.' },
-    { icon: <Globe />, title: 'Global Payments', desc: 'Send and receive across currencies with FX optimization and transparent fees.' },
-    { icon: <BarChart3 />, title: 'Analytics', desc: 'Dashboards, cohort trends, and exportable reports for finance and ops teams.' },
-    { icon: <Shield />, title: 'Risk & Compliance', desc: 'KYC/KYB, AML screening, and rule-based monitoring built-in.' },
+    { icon: <Wallet />, title: 'Card Issuing', desc: 'Virtual and physical cards with spending controls, limits, and real-time notifications.', slug: 'card-issuing' },
+    { icon: <Globe />, title: 'Global Payments', desc: 'Send and receive across currencies with FX optimization and transparent fees.', slug: 'global-payments' },
+    { icon: <BarChart3 />, title: 'Analytics', desc: 'Dashboards, cohort trends, and exportable reports for finance and ops teams.', slug: 'analytics' },
+    { icon: <Shield />, title: 'Risk & Compliance', desc: 'KYC/KYB, AML screening, and rule-based monitoring built-in.', slug: 'risk-compliance' },
   ];
 
   const platform = [
@@ -66,9 +67,9 @@ export default function ServicesPage() {
                   </div>
                   <h3 className="mt-4 font-semibold">{c.title}</h3>
                   <p className="text-sm text-slate-300">{c.desc}</p>
-                  <button className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-orange-400 hover:text-orange-300">
-                    Learn more
-                  </button>
+                  <Link to={`/services/${c.slug}`} className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-orange-400 hover:text-orange-300">
+                    Learn more <ArrowRight size={16} />
+                  </Link>
                 </div>
               ))}
             </div>
