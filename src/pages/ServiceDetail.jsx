@@ -93,6 +93,59 @@ export default function ServiceDetailPage() {
 
   const Icon = useMemo(() => (data ? data.icon : Shield), [data]);
 
+  const otherServices = Object.entries(SERVICES)
+    .filter(([k]) => k !== slug)
+    .map(([k, v]) => ({ slug: k, title: v.title, Icon: v.icon }));
+
+  const tiers = [
+    {
+      name: 'Starter',
+      price: 'Free',
+      period: 'Sandbox',
+      features: [
+        'Sandbox access',
+        'API keys & docs',
+        'Basic analytics',
+        'Email support',
+      ],
+    },
+    {
+      name: 'Growth',
+      price: '$299',
+      period: 'per month',
+      features: [
+        'Everything in Starter',
+        'Production onboarding',
+        'Advanced analytics',
+        'Priority support',
+      ],
+      highlight: true,
+    },
+    {
+      name: 'Scale',
+      price: 'Custom',
+      period: 'annual',
+      features: [
+        'Dedicated SSO/SAML',
+        'Custom SLAs',
+        'Solution architect',
+        'Volume pricing',
+      ],
+    },
+  ];
+
+  // For comparison, map features across tiers (true if included)
+  const comparisonRows = [
+    { feature: 'Sandbox access', starter: true, growth: true, scale: true },
+    { feature: 'Production onboarding', starter: false, growth: true, scale: true },
+    { feature: 'Advanced analytics', starter: false, growth: true, scale: true },
+    { feature: 'Priority support', starter: false, growth: true, scale: true },
+    { feature: 'Dedicated SSO/SAML', starter: false, growth: false, scale: true },
+    { feature: 'Custom SLAs', starter: false, growth: false, scale: true },
+    { feature: 'Solution architect', starter: false, growth: false, scale: true },
+    { feature: 'Volume pricing', starter: false, growth: false, scale: true },
+  ];
+
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />
@@ -123,6 +176,7 @@ export default function ServiceDetailPage() {
 
         {data && (
           <>
+            {/* Capabilities & Use cases */}
             <section className="py-14 bg-black">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-10">
                 <div className="lg:col-span-2">
@@ -163,6 +217,142 @@ export default function ServiceDetailPage() {
               </div>
             </section>
 
+            {/* Pricing */}
+            <section className="py-14 bg-neutral-950 border-t border-white/10">
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="text-center max-w-2xl mx-auto">
+                  <h2 className="text-2xl md:text-3xl font-semibold">Simple, transparent pricing</h2>
+                  <p className="mt-3 text-slate-300">Start in sandbox for free and move to production when you’re ready.</p>
+                </div>
+                <div className="mt-8 grid md:grid-cols-3 gap-6">
+                  {tiers.map((t) => (
+                    <div key={t.name} className={`rounded-2xl border border-white/10 bg-white/5 p-6 ${t.highlight ? 'ring-1 ring-orange-500/40' : ''}`}>
+                      <div className="flex items-start justify-between">
+                        <h3 className="font-semibold">{t.name}</h3>
+                        {t.highlight && (
+                          <span className="text-xs px-2 py-1 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20">Popular</span>
+                        )}
+                      </div>
+                      <div className="mt-4">
+                        <span className="text-3xl font-semibold">{t.price}</span>
+                        <span className="ml-2 text-sm text-slate-400">{t.period}</span>
+                      </div>
+                      <ul className="mt-4 space-y-2 text-sm">
+                        {t.features.map((f) => (
+                          <li key={f} className="flex items-start gap-2">
+                            <Check size={16} className="text-orange-400 mt-0.5" />
+                            <span className="text-slate-300">{f}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <a href="#contact" className={`mt-6 inline-flex w-full items-center justify-center rounded-full px-4 py-2 text-sm font-medium ${t.highlight ? 'bg-orange-500 text-black hover:bg-orange-400' : 'bg-white/10 text-white hover:bg-white/20'}`}>
+                        Choose {t.name}
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Feature comparison */}
+            <section className="py-14 bg-black">
+              <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                <h2 className="text-2xl md:text-3xl font-semibold text-center">Feature comparison</h2>
+                <div className="mt-8 overflow-x-auto rounded-2xl border border-white/10">
+                  <table className="min-w-full text-sm">
+                    <thead className="bg-white/5">
+                      <tr>
+                        <th className="text-left px-4 py-3 font-medium text-slate-300">Feature</th>
+                        <th className="px-4 py-3 font-medium text-slate-300">Starter</th>
+                        <th className="px-4 py-3 font-medium text-slate-300">Growth</th>
+                        <th className="px-4 py-3 font-medium text-slate-300">Scale</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-white/10">
+                      {comparisonRows.map((row) => (
+                        <tr key={row.feature} className="bg-black/40">
+                          <td className="px-4 py-3 text-slate-200 text-left">{row.feature}</td>
+                          {[row.starter, row.growth, row.scale].map((val, idx) => (
+                            <td key={idx} className="px-4 py-3 text-center">
+                              {val ? (
+                                <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20">
+                                  <Check size={14} />
+                                </span>
+                              ) : (
+                                <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-white/5 text-slate-500 border border-white/10">—</span>
+                              )}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+
+            {/* Related services */}
+            <section className="py-14 bg-neutral-950 border-t border-white/10">
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="flex items-end justify-between gap-6">
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-semibold">Related services</h2>
+                    <p className="mt-2 text-slate-300">Explore more ways to build and scale.</p>
+                  </div>
+                  <Link to="/services" className="hidden sm:inline-flex items-center rounded-full bg-white/10 text-white px-4 py-2 text-sm font-medium hover:bg-white/20">View all</Link>
+                </div>
+                <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {otherServices.map((s) => (
+                    <Link key={s.slug} to={`/services/${s.slug}`} className="group rounded-2xl border border-white/10 p-6 bg-white/5 hover:bg-white/10 transition-colors">
+                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-orange-500 text-black">
+                        <s.Icon size={18} />
+                      </div>
+                      <h3 className="mt-4 font-semibold group-hover:text-white text-slate-100">{s.title}</h3>
+                      <p className="text-sm text-slate-400">Learn how {s.title.toLowerCase()} can help your team.</p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Contact form */}
+            <section id="contact" className="py-14 bg-black">
+              <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+                <div className="text-center">
+                  <h2 className="text-2xl md:text-3xl font-semibold">Talk to our team</h2>
+                  <p className="mt-2 text-slate-300">Tell us a bit about your use case and we’ll reach out shortly.</p>
+                </div>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    alert('Thanks! We\'ll be in touch shortly.');
+                  }}
+                  className="mt-8 space-y-4"
+                >
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm text-slate-300">Full name</label>
+                      <input required type="text" className="mt-1 w-full rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Jane Doe" />
+                    </div>
+                    <div>
+                      <label className="block text-sm text-slate-300">Work email</label>
+                      <input required type="email" className="mt-1 w-full rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="jane@company.com" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm text-slate-300">Company</label>
+                    <input type="text" className="mt-1 w-full rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Acme Inc." />
+                  </div>
+                  <div>
+                    <label className="block text-sm text-slate-300">How can we help?</label>
+                    <textarea rows={4} className="mt-1 w-full rounded-lg bg-white/5 border border-white/10 px-3 py-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder={`We\'re interested in ${data.title.toLowerCase()}...`} />
+                  </div>
+                  <button type="submit" className="inline-flex items-center rounded-full bg-orange-500 text-black px-5 py-2.5 text-sm font-medium hover:bg-orange-400">Request demo</button>
+                </form>
+              </div>
+            </section>
+
+            {/* Final CTA */}
             <section className="py-14 bg-neutral-950 border-t border-white/10">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="text-center max-w-2xl mx-auto">
