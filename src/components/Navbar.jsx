@@ -8,7 +8,7 @@ export default function Navbar() {
   const navItems = [
     { label: 'About', href: '#about', type: 'anchor' },
     { label: 'Services', href: '/services', type: 'route' },
-    { label: 'Products', href: '#products', type: 'anchor' },
+    { label: 'Products', href: '/products', type: 'route' },
     { label: 'Why Us', href: '#why-us', type: 'anchor' },
   ];
 
@@ -35,12 +35,12 @@ export default function Navbar() {
                 </a>
               )
             ))}
-            <a
-              href="#products"
+            <Link
+              to="/products"
               className="inline-flex items-center rounded-full bg-orange-500 text-black px-4 py-2 text-sm shadow hover:bg-orange-400 transition-colors"
             >
               Get Started
-            </a>
+            </Link>
           </nav>
 
           <button
@@ -76,13 +76,13 @@ export default function Navbar() {
                   </a>
                 )
               ))}
-              <a
-                href="#products"
+              <Link
+                to="/products"
                 onClick={() => setOpen(false)}
                 className="mt-2 inline-flex items-center justify-center rounded-full bg-orange-500 text-black px-4 py-2 text-sm shadow hover:bg-orange-400"
               >
                 Get Started
-              </a>
+              </Link>
             </div>
           </div>
         )}
