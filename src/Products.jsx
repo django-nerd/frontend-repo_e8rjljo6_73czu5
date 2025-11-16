@@ -1,28 +1,33 @@
 import { CheckCircle2, Rocket, Puzzle, Building2, Shield, Gauge, Cpu, ArrowRight, Star, Zap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import { Footer } from './components/Sections';
 
 export default function ProductsPage() {
   const products = [
     {
+      slug: 'cloud-platform',
       icon: <Rocket />,
       name: 'Cloud Platform',
       desc: 'Deploy, scale, and observe your applications with managed Kubernetes, autoscaling, and built‑in CI/CD.',
       highlights: ['Managed K8s', 'Autoscaling', 'Observability', 'Global CDN'],
     },
     {
+      slug: 'cybersecurity-suite',
       icon: <Shield />,
       name: 'Cybersecurity Suite',
       desc: 'End‑to‑end protection with SOC monitoring, EDR, zero‑trust access, and vulnerability management.',
       highlights: ['24/7 SOC', 'EDR/XDR', 'Zero‑trust', 'Vuln scanning'],
     },
     {
+      slug: 'devops-toolkit',
       icon: <Puzzle />,
       name: 'DevOps Toolkit',
       desc: 'Standardized pipelines, infrastructure as code, and release automation across multi‑cloud environments.',
       highlights: ['IaC modules', 'Pipeline templates', 'GitOps', 'Policy as code'],
     },
     {
+      slug: 'data-ai-studio',
       icon: <Cpu />,
       name: 'Data & AI Studio',
       desc: 'Modern data stack with ELT, real‑time streams, and ML lifecycle management from experiment to serving.',
@@ -87,9 +92,9 @@ export default function ProductsPage() {
                       <li key={h} className="flex items-center gap-2"><CheckCircle2 size={16} className="text-orange-400" /> {h}</li>
                     ))}
                   </ul>
-                  <a href="#contact" className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-orange-400 hover:text-orange-300">
-                    Pelajari lebih lanjut <ArrowRight size={16} />
-                  </a>
+                  <Link to={`/products/${p.slug}`} className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-orange-400 hover:text-orange-300">
+                    Lihat detail <ArrowRight size={16} />
+                  </Link>
                 </div>
               ))}
             </div>

@@ -6,6 +6,7 @@ import Test from './Test'
 import ServicesPage from './Services'
 import ServiceDetailPage from './pages/ServiceDetail'
 import ProductsPage from './Products'
+import ProductDetailPage from './pages/ProductDetail'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/services/:slug" element={<ServiceDetailPage />} />
         <Route path="/products" element={<ProductsPage />} />
+        <Route path="/products/:slug" element={<ProductDetailPage />} />
         <Route path="/test" element={<Test />} />
       </Routes>
     </BrowserRouter>
